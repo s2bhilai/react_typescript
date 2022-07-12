@@ -58,7 +58,7 @@ namespace API
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseRouting();//18502 6951
 
             app.UseCors(opt =>
             {
