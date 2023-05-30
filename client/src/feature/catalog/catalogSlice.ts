@@ -45,7 +45,7 @@ export const fetchProductsAsync = createAsyncThunk<
   try {
     const response = await agent.Catalog.list(params);
     thunkAPI.dispatch(setMetaData(response.metaData));
-    return response.items;
+    return response.items;//Since we have changed the response format in agent.ts - items and metadata
   } catch (error: any) {
     return thunkAPI.rejectWithValue({ error: error.data });
   }
@@ -94,7 +94,7 @@ export const catalogSlice = createSlice({
   }),
   reducers: {
     setProductParams: (state, action) => {
-      state.productsLoaded = false;
+      state.productsLoaded = false; // trigger useEffect in Catalog
       state.productParams = {
         ...state.productParams,
         ...action.payload,
