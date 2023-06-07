@@ -20,6 +20,7 @@ import { fetchBasketAsync} from "../../feature/basket/basketSlice";
 import Login from "../../feature/Account/Login";
 import Register from "../../feature/Account/Register";
 import { fetchCurrentUser } from "../../feature/Account/accountSlice";
+import Orders from "../../feature/orders/Orders";
 
 function App() {
   //const { setBasket } = useStoreContext();
@@ -74,6 +75,7 @@ function App() {
           <Route path="/checkout" component={CheckoutPage} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/orders" component={Orders} />
           <Route component={NotFound} />
         </Switch>
       </Container>

@@ -1,6 +1,8 @@
 using API.DTOs;
 using API.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Net.NetworkInformation;
 
 namespace API.Extensions;
 
@@ -23,5 +25,13 @@ public static class BasketExtensions
                 Quantity = item.Quantity
             }).ToList()
         };
+    }
+
+    public static IQueryable<Basket> RetrieveBasketWithItems(this IQueryable<Basket> query,
+        string buyerId)
+    {
+        return query.Include(i => i.Items)
+            .ThenInclude(p => p.Product)
+            .Where(w => w.BuyerId == buyerId);
     }
 }
